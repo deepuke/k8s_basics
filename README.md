@@ -40,14 +40,41 @@ Kubernetes, pod, node, service, ingress, configMap, secret.
     Blue print for app pods
     Using blue print create deployments
     Abstration of pods
-    Used for stateLESS apps
+    Used for "stateLESS" apps
 
 ## StatefulSet
-    Manages stateFUL apps or Database.
+    Manages "stateFUL" apps or Database.
     Synchronize db data/operation from multiple pods.
     
+# K8s Architecture
+
+## Worker machine in k8s cluster (Worker node)
+    - Each node has multiple Pods in it.
+    - 3 Process must be installed on every node
+        - Container runtime (.e.g : docker container)
+        - Kubelet (Communication b/n nodes are done via services (Load balancer)
+            - Interact with the both container and node
+            - Kubelet start the pod with a container inside
+            - Assigning resources from node to container
+        - Kube Proxy
+            - Forward the request in an intelligent way
+    - Nodes are the cluster service that actually do the work. so they are called worker node
+    )
 
     
-
-
-
+## Master Node (Mater Process)
+    4 process are running  on every master node
+        - Api server  (operation like if user want to deploy a new application done via api server)
+            - Cluster gateway
+            - acts as a gatekeeper for authentication
+        - Scheduler
+            - Schedule a new Pod
+            - Where to put the pod [check available node based on load]
+        - Controller manager
+            - Detect the cluster state changes
+        - etcd [key/value store]
+            - Everychange in the cluster is saved in the store
+            
+    k8s may have multiple master nodes. 
+        - where API server load balanced
+        - etcd is distributed over all master nodes
