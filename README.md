@@ -78,3 +78,40 @@ Kubernetes, pod, node, service, ingress, configMap, secret.
     k8s may have multiple master nodes. 
         - where API server load balanced
         - etcd is distributed over all master nodes
+
+# Basic installation
+    https://minikube.sigs.k8s.io/docs/start/
+    https://chocolatey.org/install
+
+## Basic commands
+    minikube <cmd>
+    kubectl  <cmd>
+
+    Samples cmds
+        - kubectl get nodes
+        - kubectl get pod 
+            |name       | replicaset_HASH | pod_HASH|
+            |nginx-depl | 5c8bf76b5b      | d7hxv   |
+        - kubectl get replicaset
+            |name       | replicaset_HASH |
+            |nginx-depl | 5c8bf76b5b      |
+        - kubectl get services
+        - kubectl create deployment <NAME> --image=image [--dry-run] [options]
+            - kubectl create deployment nginx-depl --image=nginx
+        - kubectl get deployment
+        
+        ---------------------------------------------------------------------------------
+        |   PS C:\WINDOWS\system32> kubectl create deployment nginx-depl --image=nginx
+        |   deployment.apps/nginx-depl created
+        |   PS C:\WINDOWS\system32> kubectl get pod
+        |   NAME                          READY   STATUS              RESTARTS   AGE
+        |   nginx-depl-5c8bf76b5b-d7hxv   0/1     ContainerCreating   0          27s
+        |   PS C:\WINDOWS\system32> kubectl get pod
+        |   NAME                          READY   STATUS    RESTARTS   AGE
+        |   nginx-depl-5c8bf76b5b-d7hxv   1/1     Running   0          42s
+        |   PS C:\WINDOWS\system32> kubectl get replicaset
+        |   NAME                    DESIRED   CURRENT   READY   AGE
+        |   nginx-depl-5c8bf76b5b   1         1         1       62s
+        |   PS C:\WINDOWS\system32>
+        -------------------------------------------------------------------------------
+
