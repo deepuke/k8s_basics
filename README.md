@@ -115,3 +115,9 @@ Kubernetes, pod, node, service, ingress, configMap, secret.
         |   PS C:\WINDOWS\system32>
         -------------------------------------------------------------------------------
 
+        - kubectl edit nginx-depl
+        - kubectl exec -it <pod-name> -- bin/bash  
+        - kubectl describe pod mongo-depl-5fd6b7d4b4-4sshp
+        - kubectl apply -f name.yaml
+
+
